@@ -1,8 +1,13 @@
 //child
 import React, { Component } from "react";
-import styles from './Counter.module.css';
+import PropTypes from "prop-types";
+import styles from "./Counter.module.css";
 
 class Counter extends Component {
+  /**
+   *
+   * @param {object} props
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -11,18 +16,18 @@ class Counter extends Component {
     };
   }
 
-  handlerClick = () => {
-    this.setState((state, props) => {
-      if (state.isAdd) {
-        return { count: state.count + props.step };
-      }
-      return { count: state.count - props.step };
-    });
-  };
+  // handlerClick = () => {
+  //   this.setState((state, props) => {
+  //     if (state.isAdd) {
+  //       return { count: state.count + props.step };
+  //     }
+  //     return { count: state.count - props.step };
+  //   });
+  // };
 
-  hndleCheck = ({ target: { checked } }) => {
-    this.setState({ isAdd: checked });
-  };
+  // hndleCheck = ({ target: { checked } }) => {
+  //   this.setState({ isAdd: checked });
+  // };
 
   render() {
     const { count, isAdd, check } = this.state;
@@ -46,4 +51,14 @@ class Counter extends Component {
   }
 }
 
+Counter.propTypes = {
+  step: PropTypes.number.isRequired,
+  handlerClick: PropTypes.func.isRequired,
+  hndleCheck: PropTypes.func.isRequired
+};
+Counter.defaultProps = {
+  step: 1,
+  handlerClick: ()=>{},
+  hndleCheck: ()=>{}
+};
 export default Counter;

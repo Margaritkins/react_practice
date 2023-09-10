@@ -1,13 +1,20 @@
 //parent
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import Counter from "./Counter";
 import styles from './BlockCounter.module.css'
 
+
 class BlockCounter extends Component {
+  /**
+   * 
+   * @param {object} props 
+   */
   constructor(props) {
     super(props);
     this.state = { step: 1 };
   }
+
   handleBlur = ({ target: { value } }) => {
     if (value === "") {
       this.setState({
@@ -27,7 +34,7 @@ class BlockCounter extends Component {
   render() {
     return (
       <section className={styles.wrapper}>
-        <Counter step={this.state.step} />
+        <Counter  />
         <input
         className={styles.input}
           onBlur={this.handleBlur}
@@ -40,4 +47,6 @@ class BlockCounter extends Component {
   }
 }
 
+// BlockCounter.propTypes = {step: PropTypes.number.isRequired};
+// BlockCounter.defaultProps={  step: 1}
 export default BlockCounter;
